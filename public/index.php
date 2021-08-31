@@ -7,6 +7,7 @@
  * @author   Taylor Otwell <taylor@laravel.com>
  */
 
+// 時間はかる
 define('LARAVEL_START', microtime(true));
 
 /*
@@ -21,6 +22,7 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
+// autoload.php読み込み
 require __DIR__.'/../vendor/autoload.php';
 
 /*
@@ -35,6 +37,7 @@ require __DIR__.'/../vendor/autoload.php';
 |
 */
 
+// app.php読み込み
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
 /*
@@ -48,13 +51,16 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 | and wonderful application we have prepared for them.
 |
 */
-
+// laravelの処理本体のクラスのインスタンスを作っている
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 
+// request→ブラウザからの情報全て(urlとか、言語)入る
+// handleでcontrollerとか使っての処理
+// responseは画面に表示する内容
 $response = $kernel->handle(
     $request = Illuminate\Http\Request::capture()
 );
-
+// responseをブラウザに送る
 $response->send();
-
+// 終わり
 $kernel->terminate($request, $response);
