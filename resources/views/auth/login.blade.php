@@ -9,7 +9,7 @@
                         {{ __('messages.Login') }}
                     </div>
                     <div class="login-body card-body">
-                        <form method="POST" action="{{route('login') }}"> //どゆこと
+                        <form method="POST" action="{{route('login') }}"> 
                             @csrf
                             <div class="form-group row">
                                 <label for="email" class="col-sm-4 col-form-label text-md-right">
